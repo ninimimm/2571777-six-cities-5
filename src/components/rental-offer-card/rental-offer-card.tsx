@@ -4,18 +4,28 @@ import { RentalOffer } from '../../models';
 export type RentalOfferCardProps = {
   rentalOffer: RentalOffer;
   isActive: boolean;
+  isNearPlaces?: boolean;
 };
 
 export function RentalOfferCard({
   rentalOffer,
   isActive,
+  isNearPlaces = false,
 }: RentalOfferCardProps): JSX.Element {
   return (
-    <article className={`cities__card place-card ${isActive ? 'active' : ''}`}>
+    <article
+      className={`${
+        isNearPlaces ? 'near-places__card' : 'cities__card'
+      } place-card ${isActive ? 'active' : ''}`}
+    >
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div
+        className={`${
+          isNearPlaces ? 'near-places__image-wrapper' : 'cities__image-wrapper'
+        } place-card__image-wrapper`}
+      >
         <Link to={`/offer/${rentalOffer.id}`}>
           <img
             className="place-card__image"
@@ -46,7 +56,9 @@ export function RentalOfferCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${rentalOffer.id}`}>{rentalOffer.offerDescription}</Link>
+          <Link to={`/offer/${rentalOffer.id}`}>
+            {rentalOffer.offerDescription}
+          </Link>
         </h2>
         <p className="place-card__type">{rentalOffer.housingType}</p>
       </div>

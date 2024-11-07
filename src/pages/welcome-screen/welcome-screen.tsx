@@ -1,7 +1,7 @@
-import { Map } from '../../components/map/index';
+import { RentalOfferList } from '../../components/rental-offer-card';
+import { Map } from '../../map/index';
 import { rentalOfferList } from '../../mocks/offers';
 import { RentalOffer } from '../../models';
-import { RentalOfferList } from './index';
 
 export type WelcomeScreenProps = {
   rentalOffersList: RentalOffer[];

@@ -1,6 +1,6 @@
 import leaflet from 'leaflet';
 import { useEffect, useRef, useState } from 'react';
-import { City } from '../../models';
+import { City } from '../models';
 
 function useMap(
   mapRef: React.MutableRefObject<HTMLLIElement | null>,

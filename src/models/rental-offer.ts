@@ -5,6 +5,7 @@ import {
   Rating,
   User,
 } from './index.js';
+import { Review } from './review.js';
 export type RentalOffer = {
   id: string;
   name: string;
@@ -25,4 +26,5 @@ export type RentalOffer = {
   commentsCount: number;
   creater: User;
   fullOfferDescription: string;
+  reviews: Review[];
 };

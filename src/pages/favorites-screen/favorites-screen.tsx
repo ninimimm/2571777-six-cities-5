@@ -1,5 +1,5 @@
+import { RentalOfferList } from '../../components/rental-offer-card';
 import { RentalOffer } from '../../models';
-import { RentalOfferList } from '../welcome-screen';
 
 export type FavoritesScreenProps = {
   rentalOffersList: RentalOffer[];

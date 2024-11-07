@@ -1,5 +1,11 @@
 import { v4 as uuid } from 'uuid';
-import { CityEnum, Convenience, HousingType, Rating, RentalOffer } from '../models';
+import {
+  CityEnum,
+  Convenience,
+  HousingType,
+  Rating,
+  RentalOffer,
+} from '../models';
 import { userList } from './users';
 
 export const rentalOfferList: RentalOffer[] = [
@@ -39,6 +45,29 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[0],
     fullOfferDescription:
       'Идеальное место для романтического отдыха или деловых поездок. Квартира находится в сердце города, обеспечивая удобный доступ к основным достопримечательностям и развлекательным заведениям. Оснащена всем необходимым для комфортного проживания, включая современную кухню и уютную спальню.',
+    reviews: [
+      {
+        id: uuid(),
+        user: userList[0],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[0],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[0],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+    ],
   },
   {
     id: uuid(),
@@ -79,11 +108,35 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[1],
     fullOfferDescription:
       'Описание: Отличное место для семейного отдыха и прогулок на свежем воздухе. Этот домик окружен живописной природой и предлагает просторные комнаты, идеально подходящие для семейных собраний. Также доступны возможности для активного отдыха: пешие прогулки, катание на велосипеде и многое другое.',
+    reviews: [
+      {
+        id: uuid(),
+        user: userList[1],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[1],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[1],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+    ],
   },
   {
     id: uuid(),
     name: 'Просторный номер в хостеле',
-    offerDescription: 'Подходит для бюджетных путешественников, есть все необходимое.',
+    offerDescription:
+      'Подходит для бюджетных путешественников, есть все необходимое.',
     publicationDate: new Date('2024-09-30T12:15:00.000Z'),
     city: {
       title: CityEnum.Hamburg,
@@ -113,7 +166,31 @@ export const rentalOfferList: RentalOffer[] = [
     author: 'https://example3.com/author',
     commentsCount: 1,
     creater: userList[2],
-    fullOfferDescription: 'Подходит для бюджетных путешественников, есть все необходимое. Номер предлагает доступное размещение с комфортом. Идеально подходит для тех, кто хочет сэкономить, но не отказываться от удобств. Хостел расположен в центре города, что позволяет легко исследовать местные достопримечательности.'
+    fullOfferDescription:
+      'Подходит для бюджетных путешественников, есть все необходимое. Номер предлагает доступное размещение с комфортом. Идеально подходит для тех, кто хочет сэкономить, но не отказываться от удобств. Хостел расположен в центре города, что позволяет легко исследовать местные достопримечательности.',
+    reviews: [
+      {
+        id: uuid(),
+        user: userList[2],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[2],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[2],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+    ],
   },
   {
     id: uuid(),
@@ -127,7 +204,7 @@ export const rentalOfferList: RentalOffer[] = [
         latitude: 52.3809553943508,
         longitude: 4.939309666406198,
       },
-      zoom: 10
+      zoom: 10,
     },
     previewUrl: 'https://example4.com/preview',
     housingImages: [
@@ -148,5 +225,28 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[3],
     fullOfferDescription:
       'ИРоскошный номер с видом на город, идеально подходит для романтических поездок. Этот люкс предлагает великолепные условия для отдыха: стильный интерьер, высококачественное обслуживание и возможность насладиться прекрасными видами. Идеальное место для тех, кто ценит комфорт и стиль.',
+    reviews: [
+      {
+        id: uuid(),
+        user: userList[3],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[3],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+      {
+        id: uuid(),
+        user: userList[3],
+        rating: Rating['4star'],
+        reviewText: 'Отлично',
+        time: new Date(),
+      },
+    ],
   },
 ];
