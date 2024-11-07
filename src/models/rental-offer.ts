@@ -1,7 +1,6 @@
 import {
   City,
   Convenience,
-  Coordinate,
   HousingType,
   Rating,
   User,
@@ -26,5 +25,4 @@ export type RentalOffer = {
   commentsCount: number;
   creater: User;
   fullOfferDescription: string;
-  offerCoordinates: Coordinate;
 };

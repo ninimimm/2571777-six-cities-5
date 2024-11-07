@@ -1,3 +1,5 @@
+import { Map } from '../../components/map/index';
+import { rentalOfferList } from '../../mocks/offers';
 import { RentalOffer } from '../../models';
 import { RentalOfferList } from './index';
 
@@ -86,8 +88,19 @@ export function WelcomeScreen({
             </ul>
           </section>
         </div>
-        <RentalOfferList rentalOfferList={rentalOffersList} />
       </main>
+      <div className="cities">
+        <div className="cities__places-container container">
+          <RentalOfferList rentalOfferList={rentalOffersList} />
+          <div className="cities__right-section">
+            <section className="cities__map map">
+              <Map
+                cities={rentalOfferList.map((rentalOffer) => rentalOffer.city)}
+              />
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

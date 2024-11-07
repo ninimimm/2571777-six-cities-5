@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { City, Convenience, HousingType, Rating, RentalOffer } from '../models';
+import { CityEnum, Convenience, HousingType, Rating, RentalOffer } from '../models';
 import { userList } from './users';
 
 export const rentalOfferList: RentalOffer[] = [
@@ -9,7 +9,14 @@ export const rentalOfferList: RentalOffer[] = [
     offerDescription:
       'Идеальное место для романтического отдыха или деловых поездок.',
     publicationDate: new Date('2024-09-30T15:45:12.000Z'),
-    city: City.Paris,
+    city: {
+      title: CityEnum.Paris,
+      coordinate: {
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+      },
+      zoom: 10,
+    },
     previewUrl: 'https://example.com/preview',
     housingImages: [
       'https://example.com/images/0',
@@ -32,10 +39,6 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[0],
     fullOfferDescription:
       'Идеальное место для романтического отдыха или деловых поездок. Квартира находится в сердце города, обеспечивая удобный доступ к основным достопримечательностям и развлекательным заведениям. Оснащена всем необходимым для комфортного проживания, включая современную кухню и уютную спальню.',
-    offerCoordinates: {
-      latitude: 48.85661,
-      longitude: 2.351499,
-    },
   },
   {
     id: uuid(),
@@ -43,7 +46,14 @@ export const rentalOfferList: RentalOffer[] = [
     offerDescription:
       'Отличное место для семейного отдыха и прогулок на свежем воздухе.',
     publicationDate: new Date('2024-09-30T10:22:45.000Z'),
-    city: City.Brussels,
+    city: {
+      title: CityEnum.Brussels,
+      coordinate: {
+        latitude: 52.3609553943508,
+        longitude: 4.85309666406198,
+      },
+      zoom: 10,
+    },
     previewUrl: 'https://example2.com/preview',
     housingImages: [
       'https://example2.com/images/0',
@@ -69,18 +79,20 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[1],
     fullOfferDescription:
       'Описание: Отличное место для семейного отдыха и прогулок на свежем воздухе. Этот домик окружен живописной природой и предлагает просторные комнаты, идеально подходящие для семейных собраний. Также доступны возможности для активного отдыха: пешие прогулки, катание на велосипеде и многое другое.',
-    offerCoordinates: {
-      latitude: 50.846557,
-      longitude: 4.351697,
-    },
   },
   {
     id: uuid(),
     name: 'Просторный номер в хостеле',
-    offerDescription:
-      'Подходит для бюджетных путешественников, есть все необходимое.',
+    offerDescription: 'Подходит для бюджетных путешественников, есть все необходимое.',
     publicationDate: new Date('2024-09-30T12:15:00.000Z'),
-    city: City.Hamburg,
+    city: {
+      title: CityEnum.Hamburg,
+      coordinate: {
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+      },
+      zoom: 10,
+    },
     previewUrl: 'https://example3.com/preview',
     housingImages: [
       'https://example3.com/images/0',
@@ -101,12 +113,7 @@ export const rentalOfferList: RentalOffer[] = [
     author: 'https://example3.com/author',
     commentsCount: 1,
     creater: userList[2],
-    fullOfferDescription:
-      'Подходит для бюджетных путешественников, есть все необходимое. Номер предлагает доступное размещение с комфортом. Идеально подходит для тех, кто хочет сэкономить, но не отказываться от удобств. Хостел расположен в центре города, что позволяет легко исследовать местные достопримечательности.',
-    offerCoordinates: {
-      latitude: 53.550341,
-      longitude: 10.000654,
-    },
+    fullOfferDescription: 'Подходит для бюджетных путешественников, есть все необходимое. Номер предлагает доступное размещение с комфортом. Идеально подходит для тех, кто хочет сэкономить, но не отказываться от удобств. Хостел расположен в центре города, что позволяет легко исследовать местные достопримечательности.'
   },
   {
     id: uuid(),
@@ -114,7 +121,14 @@ export const rentalOfferList: RentalOffer[] = [
     offerDescription:
       'Роскошный номер с видом на город, идеально подходит для романтических поездок.',
     publicationDate: new Date('2024-09-30T11:30:00.000Z'),
-    city: City.Dusseldorf,
+    city: {
+      title: CityEnum.Dusseldorf,
+      coordinate: {
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+      },
+      zoom: 10
+    },
     previewUrl: 'https://example4.com/preview',
     housingImages: [
       'https://example4.com/images/0',
@@ -134,9 +148,5 @@ export const rentalOfferList: RentalOffer[] = [
     creater: userList[3],
     fullOfferDescription:
       'ИРоскошный номер с видом на город, идеально подходит для романтических поездок. Этот люкс предлагает великолепные условия для отдыха: стильный интерьер, высококачественное обслуживание и возможность насладиться прекрасными видами. Идеальное место для тех, кто ценит комфорт и стиль.',
-    offerCoordinates: {
-      latitude: 52.520008,
-      longitude: 13.404954,
-    },
   },
 ];
