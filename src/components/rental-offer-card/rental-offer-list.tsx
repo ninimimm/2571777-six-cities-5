@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { RentalOffer } from '../../models';
+import { City, RentalOffer } from '../../models';
 import { RentalOfferCard } from './index';
 
 export type RentalOfferListProps = {
   rentalOfferList: RentalOffer[];
+  cities: City[];
 };
 
 export function RentalOfferList({
-  rentalOfferList,
+  rentalOfferList, cities
 }: RentalOfferListProps): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
 
@@ -22,7 +23,7 @@ export function RentalOfferList({
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">
-        {rentalOfferList.length} places to stay in Amsterdam
+        {rentalOfferList.length} places to stay in {cities[0].title}
       </b>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>

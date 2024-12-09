@@ -7,11 +7,12 @@ import useMap from './useMap';
 
 export type MapProps = {
   cities: City[];
+  className: string;
 };
 
-export function Map({ cities }: MapProps): JSX.Element {
+export function Map({ cities, className}: MapProps): JSX.Element {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, cities);
+  const map = useMap(mapRef);
 
   const defaultCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_DEFAULT,
@@ -37,5 +38,5 @@ export function Map({ cities }: MapProps): JSX.Element {
     }
   }, [map, cities, defaultCustomIcon]);
 
-  return <div style={{ height: '500px' }} ref={mapRef}></div>;
+  return <section className={className} style={{ height: '500px' }} ref={mapRef}></section>;
 }

@@ -16,6 +16,7 @@ export const rentalOfferList: RentalOffer[] = [
       'Идеальное место для романтического отдыха или деловых поездок.',
     publicationDate: new Date('2024-09-30T15:45:12.000Z'),
     city: {
+      id: 1,
       title: CityEnum.Paris,
       coordinate: {
         latitude: 52.3909553943508,
@@ -76,6 +77,7 @@ export const rentalOfferList: RentalOffer[] = [
       'Отличное место для семейного отдыха и прогулок на свежем воздухе.',
     publicationDate: new Date('2024-09-30T10:22:45.000Z'),
     city: {
+      id: 2,
       title: CityEnum.Brussels,
       coordinate: {
         latitude: 52.3609553943508,
@@ -139,6 +141,7 @@ export const rentalOfferList: RentalOffer[] = [
       'Подходит для бюджетных путешественников, есть все необходимое.',
     publicationDate: new Date('2024-09-30T12:15:00.000Z'),
     city: {
+      id: 3,
       title: CityEnum.Hamburg,
       coordinate: {
         latitude: 52.3909553943508,
@@ -199,6 +202,7 @@ export const rentalOfferList: RentalOffer[] = [
       'Роскошный номер с видом на город, идеально подходит для романтических поездок.',
     publicationDate: new Date('2024-09-30T11:30:00.000Z'),
     city: {
+      id: 4,
       title: CityEnum.Dusseldorf,
       coordinate: {
         latitude: 52.3809553943508,

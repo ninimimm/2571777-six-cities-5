@@ -1,15 +1,17 @@
 import { RentalOfferList } from '../../components/rental-offer-card';
 import { Map } from '../../map/index';
-import { rentalOfferList } from '../../mocks/offers';
 import { RentalOffer } from '../../models';
+import { useAppSelector } from '../../hooks';
+import CitiesList from './cities-list';
 
 export type WelcomeScreenProps = {
   rentalOffersList: RentalOffer[];
 };
 
-export function WelcomeScreen({
-  rentalOffersList,
-}: WelcomeScreenProps): JSX.Element {
+export function WelcomeScreen(): JSX.Element {
+  const cities = useAppSelector((state) => state.cities);
+  const offers = useAppSelector((state) => state.offers);
+  const currentOffers = offers.filter((offer) => offer.city === cities[0]);
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -54,50 +56,18 @@ export function WelcomeScreen({
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <CitiesList cities={cities.filter((item, pos) => cities.indexOf(item) === pos)} />
           </section>
         </div>
       </main>
       <div className="cities">
         <div className="cities__places-container container">
-          <RentalOfferList rentalOfferList={rentalOffersList} />
+          <RentalOfferList rentalOfferList={currentOffers} cities={cities} />
           <div className="cities__right-section">
-            <section className="cities__map map">
-              <Map
-                cities={rentalOfferList.map((rentalOffer) => rentalOffer.city)}
-              />
-            </section>
+            <Map
+              cities={currentOffers.map((rentalOffer) => rentalOffer.city)}
+              className="cities__map map"
+            />
           </div>
         </div>
       </div>

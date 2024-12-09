@@ -1,14 +1,16 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { ReviewList } from '../../components/app/review';
-import { RentalOffer } from '../../models';
 import { Map } from '../../map/index';
+import { RentalOffer } from '../../models';
 import { NearbyOffersList } from './nearby-offers-list';
+import { useAppSelector } from '../../hooks';
 
 export type WelcomeScreenProps = {
   rentalOfferList: RentalOffer[];
 };
 
-function OfferScreen({ rentalOfferList }: WelcomeScreenProps): JSX.Element {
+function OfferScreen(): JSX.Element {
+  const rentalOfferList = useAppSelector((state) => state.offers);
   const { id } = useParams();
   const rentalOffer = rentalOfferList.find((x) => x.id === id);
   if (!rentalOffer) {
@@ -176,14 +178,15 @@ function OfferScreen({ rentalOfferList }: WelcomeScreenProps): JSX.Element {
               <ReviewList reviewList={rentalOffer.reviews} />
             </div>
           </div>
-          <section className="offer__map map">
-            <Map
-              cities={rentalOfferList.map((rentalOfferItem) => rentalOfferItem.city)}
-            />
-          </section>
+          <Map
+            cities={rentalOfferList.map(
+              (rentalOfferItem) => rentalOfferItem.city
+            )}
+            className="offer__map map"
+          />
         </section>
         <div className="container">
-          <NearbyOffersList rentalOfferList={rentalOfferList}/>
+          <NearbyOffersList rentalOfferList={rentalOfferList} />
         </div>
       </main>
     </div>

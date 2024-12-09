@@ -1,11 +1,11 @@
 import leaflet from 'leaflet';
 import { useEffect, useRef, useState } from 'react';
-import { City } from '../models';
+import { useAppSelector } from '../hooks';
 
 function useMap(
   mapRef: React.MutableRefObject<HTMLLIElement | null>,
-  cities: City[]
 ) {
+  const cities = useAppSelector((state) => state.cities);
   const [map, setMap] = useState<leaflet.Map | null>(null);
   const isRenderedRef = useRef(false);
 

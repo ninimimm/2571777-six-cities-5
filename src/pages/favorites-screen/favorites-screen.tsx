@@ -1,13 +1,8 @@
 import { RentalOfferList } from '../../components/rental-offer-card';
-import { RentalOffer } from '../../models';
+import { useAppSelector } from '../../hooks';
 
-export type FavoritesScreenProps = {
-  rentalOffersList: RentalOffer[];
-};
-
-function FavoritesScreen({
-  rentalOffersList,
-}: FavoritesScreenProps): JSX.Element {
+function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers).filter((offer) => offer.isFavorite);
   return (
     <div className="page">
       <header className="header">
@@ -62,7 +57,7 @@ function FavoritesScreen({
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <RentalOfferList rentalOfferList={rentalOffersList} />
+                  <RentalOfferList rentalOfferList={offers} cities={offers.map((offer) => offer.city)}/>
                 </div>
               </li>
             </ul>

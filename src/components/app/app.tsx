@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { RentalOffer } from '../../models';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import OfferScreen from '../../pages/offer-screen/offer-screen';
@@ -8,11 +7,7 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 import { WelcomeScreen } from '../../pages/welcome-screen/welcome-screen';
 import PrivateRoute from './private-route';
 
-type AppScreenProps = {
-  rentalOfferList: RentalOffer[];
-};
-
-function App({ rentalOfferList }: AppScreenProps): JSX.Element {
+function App(): JSX.Element {
   const authorizationStatus = AuthorizationStatus.Auth;
 
   return (
@@ -20,20 +15,20 @@ function App({ rentalOfferList }: AppScreenProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<WelcomeScreen rentalOffersList={rentalOfferList} />}
+          element={<WelcomeScreen/>}
         />
         <Route path={AppRoute.Login} element={<LoginScreen />} />
         <Route
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <FavoritesScreen rentalOffersList={rentalOfferList} />
+              <FavoritesScreen/>
             </PrivateRoute>
           }
         />
         <Route
           path={`${AppRoute.Offer}/:id`}
-          element={<OfferScreen rentalOfferList={rentalOfferList} />}
+          element={<OfferScreen/>}
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
