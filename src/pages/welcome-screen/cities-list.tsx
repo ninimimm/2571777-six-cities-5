@@ -1,5 +1,5 @@
 import {useAppDispatch} from '../../hooks';
-import {changeCities} from '../../store/action.ts';
+import {changeCity} from '../../store/action.js';
 import { City } from '../../models/index.js';
 
 
@@ -9,8 +9,8 @@ type CitiesListProps = {
 
 export default function CitiesList({ cities }: CitiesListProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const callbackCitiesChange = (values: City[]) => {
-    dispatch(changeCities(values));
+  const callbackCitiesChange = (cities1: City[]) => {
+    dispatch(changeCity(cities1));
   };
   return (
     <ul className="locations__list tabs__list">

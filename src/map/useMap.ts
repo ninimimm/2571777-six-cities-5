@@ -1,6 +1,6 @@
 import leaflet from 'leaflet';
 import { useEffect, useRef, useState } from 'react';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks/index';
 
 function useMap(
   mapRef: React.MutableRefObject<HTMLLIElement | null>,

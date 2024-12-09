@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setSortingType } from '../../store/action';
+import { setSortingType } from '../../store/action.js';
 import { SortTypes } from '../const';
 
 type SortVersionProps = {

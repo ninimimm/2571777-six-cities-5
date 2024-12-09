@@ -1,43 +1,57 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { rentalOfferList } from '../mocks';
-import { changeCities, setCurrentOfferId, setOffers, setSortingType } from './action';
+import { changeCity, setAuthStatus, setCurrentOfferId, setLoadingStatus, setName, setOfferOwnInfo, setOfferPageLoadingStatus, setOffers, setReviews, setSortingType } from './action';
 import { AppState } from '../types/state';
-import { SortTypes } from '../pages/const';
+import { AuthorizationStatus, SortTypes } from '../pages/const';
+import { CityEnum } from '../models';
 
 const initialState: AppState = {
-  currentOfferId: undefined,
-  cities: rentalOfferList.map((offer) => offer.city),
-  offers: rentalOfferList,
+  currentOfferId: '',
+  cities: [{
+    id: 0,
+    title: CityEnum.Amsterdam,
+    coordinate: {latitude: 0, longitude: 0},
+    zoom: 0,
+  }],
+  offers: [],
   sortingType: SortTypes.Popular,
+  isLoading: true,
+  authorizationStatus: AuthorizationStatus.Unknown,
+  name: '',
+  isOfferPageLoading: false,
+  offerOwnInfo: null,
+  reviews: []
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(changeCities, (state, { payload }) => {
+    .addCase(changeCity, (state, { payload }) => {
       state.cities = payload;
     })
-    .addCase(setOffers, (state) => {
-      state.offers = rentalOfferList;
+    .addCase(setOffers, (state, { payload }) => {
+      state.offers = payload;
     })
     .addCase(setSortingType, (state, { payload }) => {
       state.sortingType = payload;
-      const arrayForSort = [...rentalOfferList];
-      switch (payload) {
-        case SortTypes.Popular:
-          state.offers = arrayForSort;
-          break;
-        case SortTypes.PriceFromHigh:
-          state.offers = arrayForSort.sort((a, b) => b.rentalCost - a.rentalCost);
-          break;
-        case SortTypes.PriceFromLow:
-          state.offers = arrayForSort.sort((a, b) => a.rentalCost - b.rentalCost);
-          break;
-        case SortTypes.TopRated:
-          state.offers = arrayForSort.sort((a, b) => +b.rating.split('%')[0] - +a.rating.split('%')[0]);
-          break;
-      }
     })
     .addCase(setCurrentOfferId, (state, { payload }) => {
       state.currentOfferId = payload;
+    })
+    .addCase(setLoadingStatus, (state, { payload }) => {
+      state.isLoading = payload;
+    })
+    .addCase(setAuthStatus, (state, { payload }) => {
+      state.authorizationStatus = payload;
+    })
+    .addCase(setName, (state, { payload }) => {
+      state.name = payload;
+    })
+    .addCase(setOfferOwnInfo, (state, { payload }) => {
+      state.offerOwnInfo = payload;
+    })
+    .addCase(setOfferPageLoadingStatus, (state, { payload }) => {
+      state.isOfferPageLoading = payload;
+    })
+    .addCase(setReviews, (state, { payload }) => {
+      state.reviews = payload;
     });
 });
