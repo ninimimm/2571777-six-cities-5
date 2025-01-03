@@ -1,3 +1,5 @@
+import { MemoizedAuthHeader } from '../auth-header/auth-header';
+
 function FavoritesEmptyScreen(): JSX.Element {
   return (
     <div className="page page--favorites-empty">
@@ -10,35 +12,16 @@ function FavoritesEmptyScreen(): JSX.Element {
                   className="header__logo"
                   src="img/logo.svg"
                   alt="6 cities logo"
-                  width={81}
-                  height={41}
+                  width="81"
+                  height="41"
                 />
               </a>
             </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a
-                    className="header__nav-link header__nav-link--profile"
-                    href="#"
-                  >
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
-                    </span>
-                    <span className="header__favorite-count">0</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <MemoizedAuthHeader />
           </div>
         </div>
       </header>
+
       <main className="page__main page__main--favorites page__main--favorites-empty">
         <div className="page__favorites-container container">
           <section className="favorites favorites--empty">
@@ -58,8 +41,8 @@ function FavoritesEmptyScreen(): JSX.Element {
             className="footer__logo"
             src="img/logo.svg"
             alt="6 cities logo"
-            width={64}
-            height={33}
+            width="64"
+            height="33"
           />
         </a>
       </footer>

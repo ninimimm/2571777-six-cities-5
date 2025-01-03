@@ -10,8 +10,8 @@ function OfferNotLoggedScreen(): JSX.Element {
                   className="header__logo"
                   src="img/logo.svg"
                   alt="6 cities logo"
-                  width={81}
-                  height={41}
+                  width="81"
+                  height="41"
                 />
               </a>
             </div>
@@ -31,6 +31,7 @@ function OfferNotLoggedScreen(): JSX.Element {
           </div>
         </div>
       </header>
+
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
@@ -89,15 +90,20 @@ function OfferNotLoggedScreen(): JSX.Element {
                   Beautiful &amp; luxurious studio at great location
                 </h1>
                 <button className="offer__bookmark-button button" type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
-                    <use xlinkHref="#icon-bookmark" />
+                  <svg className="offer__bookmark-icon" width="31" height="33">
+                    <use xlinkHref="#icon-bookmark"></use>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }} />
+                  <span
+                    style={{
+                      width: '80%',
+                    }}
+                  >
+                  </span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">4.8</span>
@@ -114,7 +120,7 @@ function OfferNotLoggedScreen(): JSX.Element {
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">€120</b>
+                <b className="offer__price-value">&euro;120</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
@@ -139,8 +145,8 @@ function OfferNotLoggedScreen(): JSX.Element {
                     <img
                       className="offer__avatar user__avatar"
                       src="img/avatar-angelina.jpg"
-                      width={74}
-                      height={74}
+                      width="74"
+                      height="74"
                       alt="Host avatar"
                     />
                   </div>
@@ -162,7 +168,7 @@ function OfferNotLoggedScreen(): JSX.Element {
               </div>
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">
-                  Reviews · <span className="reviews__amount">1</span>
+                  Reviews &middot; <span className="reviews__amount">1</span>
                 </h2>
                 <ul className="reviews__list">
                   <li className="reviews__item">
@@ -171,8 +177,8 @@ function OfferNotLoggedScreen(): JSX.Element {
                         <img
                           className="reviews__avatar user__avatar"
                           src="img/avatar-max.jpg"
-                          width={54}
-                          height={54}
+                          width="54"
+                          height="54"
                           alt="Reviews avatar"
                         />
                       </div>
@@ -181,7 +187,12 @@ function OfferNotLoggedScreen(): JSX.Element {
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={{ width: '80%' }} />
+                          <span
+                            style={{
+                              width: '80%',
+                            }}
+                          >
+                          </span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -199,12 +210,12 @@ function OfferNotLoggedScreen(): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map" />
+          <section className="offer__map map"></section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
-              Other places in the neighbourhood
+              Other places in the neighborhood
             </h2>
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
@@ -213,8 +224,8 @@ function OfferNotLoggedScreen(): JSX.Element {
                     <img
                       className="place-card__image"
                       src="img/room.jpg"
-                      width={260}
-                      height={200}
+                      width="260"
+                      height="200"
                       alt="Place image"
                     />
                   </a>
@@ -222,9 +233,9 @@ function OfferNotLoggedScreen(): JSX.Element {
                 <div className="place-card__info">
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
-                      <b className="place-card__price-value">€80</b>
+                      <b className="place-card__price-value">&euro;80</b>
                       <span className="place-card__price-text">
-                        /&nbsp;night
+                        &#47;&nbsp;night
                       </span>
                     </div>
                     <button
@@ -233,17 +244,22 @@ function OfferNotLoggedScreen(): JSX.Element {
                     >
                       <svg
                         className="place-card__bookmark-icon"
-                        width={18}
-                        height={19}
+                        width="18"
+                        height="19"
                       >
-                        <use xlinkHref="#icon-bookmark" />
+                        <use xlinkHref="#icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }} />
+                      <span
+                        style={{
+                          width: '80%',
+                        }}
+                      >
+                      </span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -253,14 +269,15 @@ function OfferNotLoggedScreen(): JSX.Element {
                   <p className="place-card__type">Room</p>
                 </div>
               </article>
+
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
                       className="place-card__image"
                       src="img/apartment-02.jpg"
-                      width={260}
-                      height={200}
+                      width="260"
+                      height="200"
                       alt="Place image"
                     />
                   </a>
@@ -268,9 +285,9 @@ function OfferNotLoggedScreen(): JSX.Element {
                 <div className="place-card__info">
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
-                      <b className="place-card__price-value">€132</b>
+                      <b className="place-card__price-value">&euro;132</b>
                       <span className="place-card__price-text">
-                        /&nbsp;night
+                        &#47;&nbsp;night
                       </span>
                     </div>
                     <button
@@ -279,17 +296,22 @@ function OfferNotLoggedScreen(): JSX.Element {
                     >
                       <svg
                         className="place-card__bookmark-icon"
-                        width={18}
-                        height={19}
+                        width="18"
+                        height="19"
                       >
-                        <use xlinkHref="#icon-bookmark" />
+                        <use xlinkHref="#icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }} />
+                      <span
+                        style={{
+                          width: '80%',
+                        }}
+                      >
+                      </span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -299,6 +321,7 @@ function OfferNotLoggedScreen(): JSX.Element {
                   <p className="place-card__type">Apartment</p>
                 </div>
               </article>
+
               <article className="near-places__card place-card">
                 <div className="place-card__mark">
                   <span>Premium</span>
@@ -308,8 +331,8 @@ function OfferNotLoggedScreen(): JSX.Element {
                     <img
                       className="place-card__image"
                       src="img/apartment-03.jpg"
-                      width={260}
-                      height={200}
+                      width="260"
+                      height="200"
                       alt="Place image"
                     />
                   </a>
@@ -317,9 +340,9 @@ function OfferNotLoggedScreen(): JSX.Element {
                 <div className="place-card__info">
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
-                      <b className="place-card__price-value">€180</b>
+                      <b className="place-card__price-value">&euro;180</b>
                       <span className="place-card__price-text">
-                        /&nbsp;night
+                        &#47;&nbsp;night
                       </span>
                     </div>
                     <button
@@ -328,17 +351,22 @@ function OfferNotLoggedScreen(): JSX.Element {
                     >
                       <svg
                         className="place-card__bookmark-icon"
-                        width={18}
-                        height={19}
+                        width="18"
+                        height="19"
                       >
-                        <use xlinkHref="#icon-bookmark" />
+                        <use xlinkHref="#icon-bookmark"></use>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '100%' }} />
+                      <span
+                        style={{
+                          width: '100%',
+                        }}
+                      >
+                      </span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
