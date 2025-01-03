@@ -15,7 +15,7 @@ import {
 import { AuthorizationStatus, SortTypes } from '../src/pages/const';
 
 describe('Actions', () => {
-  it('should create an action to change the city', () => {
+  it('should create an action to change the city!!!', () => {
     const city = {
       location: { latitude: 1, longitude: 1, zoom: 10 },
       name: 'New York',
