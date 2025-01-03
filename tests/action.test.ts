@@ -24,7 +24,7 @@ describe('Actions', () => {
     expect(changeCity(city)).toEqual(expectedAction);
   });
 
-  it('should create an action to set the auth status', () => {
+  it('should create an action to set the auth status ', () => {
     const status = AuthorizationStatus.Auth;
     const expectedAction = { type: setAuthStatus.type, payload: status };
     expect(setAuthStatus(status)).toEqual(expectedAction);
