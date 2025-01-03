@@ -165,8 +165,7 @@ function OfferInfo({ offer }: OfferInfoProps): JSX.Element {
           nearestOffer.id === offer.id,
         ])}
         className={'offer__map map'}
-      >
-      </RentalOffersMap>
+      />
     </section>
   );
 }
