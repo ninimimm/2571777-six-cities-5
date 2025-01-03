@@ -1,18 +1,73 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, memo, useCallback, useState } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { postReview } from '../../store/api-actions';
 
-export function CommentSendingForm(): JSX.Element {
+type CommentSendingFormProps = {
+  offerId: string;
+};
+
+function CommentSendingForm({ offerId }: CommentSendingFormProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const [text, setText] = useState('');
-  const handleFieldChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = evt.target;
-    setText(value);
-  };
+  const [rating, setRating] = useState(0);
+  const [canPost, setCanPost] = useState(false);
+  const [isPosting, setIsPosting] = useState(false);
+  const [formKey, setFormKey] = useState(0);
+  const handleFieldChange = useCallback(
+    (evt: ChangeEvent<HTMLTextAreaElement>) => {
+      const { value } = evt.target;
+      setText(value);
+      setCanPost(value.length >= 50 && value.length <= 300 && rating !== 0);
+    },
+    [rating]
+  );
+  const handleInputChange = useCallback(
+    (evt: ChangeEvent<HTMLInputElement>) => {
+      const { value } = evt.target;
+      setRating(+value);
+      setCanPost(text.length >= 50 && text.length <= 300 && +value !== 0);
+    },
+    [text.length]
+  );
+
+  const handleFormSubmit = useCallback(
+    (evt: FormEvent<HTMLFormElement>) => {
+      evt.preventDefault();
+      setIsPosting(true);
+      try {
+        dispatch(
+          postReview({
+            comment: text,
+            rating: rating,
+            offerId: offerId,
+          })
+        )
+          .unwrap()
+          .then(() => {
+            setText('');
+            setRating(0);
+            setFormKey((prevKey) => prevKey + 1);
+            setCanPost(false);
+          });
+      } finally {
+        setIsPosting(false);
+      }
+    },
+    [dispatch, offerId, rating, text]
+  );
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      key={formKey}
+      className="reviews__form form"
+      onSubmit={handleFormSubmit}
+      aria-disabled={!isPosting}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
         <input
+          onChange={handleInputChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="5"
@@ -30,6 +85,7 @@ export function CommentSendingForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleInputChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="4"
@@ -47,6 +103,7 @@ export function CommentSendingForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleInputChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="3"
@@ -64,6 +121,7 @@ export function CommentSendingForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleInputChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="2"
@@ -81,6 +139,7 @@ export function CommentSendingForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleInputChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="1"
@@ -104,7 +163,8 @@ export function CommentSendingForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-      />
+      >
+      </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set{' '}
@@ -114,7 +174,7 @@ export function CommentSendingForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled
+          disabled={!canPost}
         >
           Submit
         </button>
@@ -122,3 +182,4 @@ export function CommentSendingForm(): JSX.Element {
     </form>
   );
 }
+export const MemoizedCommentSendingForm = memo(CommentSendingForm);
