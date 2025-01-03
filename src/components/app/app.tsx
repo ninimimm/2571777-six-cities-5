@@ -1,42 +1,37 @@
 import { Route, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../pages/const.js';
-import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
-import LoginScreen from '../../pages/login-screen/login-screen';
-import OfferScreen from '../../pages/offer-screen/offer-screen';
-import PageNotFound from '../../pages/page-not-found/page-not-found';
-import { WelcomeScreen } from '../../pages/welcome-screen/welcome-screen';
-import PrivateRoute from './private-route';
-import { useAppSelector } from '../../hooks';
-import { MemoizedSpinner } from '../../pages/welcome-screen/spinner';
-import { HistoryRouter } from '../history-router/history-router';
 import { browserHistory } from '../../browser-history';
+import { useAppSelector } from '../../hooks';
+import { AppRoute } from '../../pages/const';
+import MemoizedFavoritesScreen from '../../pages/favorites-screen/favorites-screen';
+import MemoizedLoginScreen from '../../pages/login-screen/login-screen';
+import MemoizedMainScreen from '../../pages/main-screen/main-screen';
+import { MemoizedSpinner } from '../../pages/main-screen/spinner';
+import { MemoizedNotFoundScreen } from '../../pages/page-not-found-screen/page-not-found-screen';
+import MemoizedOfferScreen from '../../pages/offer-screen/offer-screen';
+import { HistoryRouter } from '../history-router/history-router';
+import { PrivateRoute } from '../private-route/private-route';
 
 function App(): JSX.Element {
   const isLoading = useAppSelector((state) => state.isLoading);
-  if (isLoading){
-    return(<MemoizedSpinner />);
+  if (isLoading) {
+    return <MemoizedSpinner />;
   }
+
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<WelcomeScreen/>}
-        />
-        <Route path={AppRoute.Login} element={<LoginScreen />} />
+        <Route path={AppRoute.Main} element={<MemoizedMainScreen />} />
+        <Route path={AppRoute.Login} element={<MemoizedLoginScreen />} />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <FavoritesScreen/>
+            <PrivateRoute>
+              <MemoizedFavoritesScreen />
             </PrivateRoute>
           }
         />
-        <Route
-          path={`${AppRoute.Offer}/:id`}
-          element={<OfferScreen/>}
-        />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path={AppRoute.Offer} element={<MemoizedOfferScreen />} />
+        <Route path="*" element={<MemoizedNotFoundScreen />} />
       </Routes>
     </HistoryRouter>
   );
