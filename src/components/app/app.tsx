@@ -14,7 +14,7 @@ import { PrivateRoute } from '../private-route/private-route';
 function App(): JSX.Element {
   const isLoading = useAppSelector((state) => state.isLoading);
   if (isLoading) {
-    return <MemoizedSpinner />;
+    return <MemoizedSpinner/>;
   }
 
   return (
